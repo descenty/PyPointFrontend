@@ -1,26 +1,30 @@
-import React from 'react';
+import React, {createElement, useState} from 'react';
+import {BrowserRouter, Route, Router, Routes} from 'react-router-dom'
 import logo from './logo.svg';
-import './App.css';
+import GoodsPage from "./pages/GoodsPage";
+import SideBar from "./components/SideBar";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className="grid grid-cols-7 gap-2">
+                <SideBar/>
+                <div className="col-span-6">
+                    <Routes>
+                        <Route path='/' element={<GoodsPage/>}/>
+                    </Routes>
+                </div>
+            </div>
+        </BrowserRouter>
+    )
+    /*
+  const [count, setCount] = useState(0)
+  return React.createElement('div', {}, [
+      React.createElement('p', {
+          onClick: () => setCount(count + 1)
+      }, `${count}`)
+  ])
+    */
 }
 
 export default App;
