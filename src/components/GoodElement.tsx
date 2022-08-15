@@ -1,12 +1,12 @@
 import {IGood} from "../models";
 
-interface GoodElementProps {
+interface IGoodElementProps {
     good: IGood
 }
 
-export function GoodElement({good}: GoodElementProps) {
+export function GoodElement({good}: IGoodElementProps) {
     return (
-        <div className="rounded-lg p-2 shadow-lg m-3 w-80">
+        <div className="rounded-lg p-2 shadow-lg m-3 w-80 border">
             <img src={good.image} alt="" className=""
                  width="100%" height="100%"/>
             <div className="space-y-2 flex flex-col">

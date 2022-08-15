@@ -3,19 +3,25 @@ import {BrowserRouter, Route, Router, Routes} from 'react-router-dom'
 import logo from './logo.svg';
 import GoodsPage from "./pages/GoodsPage";
 import SideBar from "./components/SideBar";
+import ErrorContext from "./context";
+import ErrorElement from "./components/ErrorElement";
 
 function App() {
+    const [error, setError] = useState<string>('')
     return (
-        <BrowserRouter>
-            <div className="grid grid-cols-7 gap-2">
-                <SideBar/>
-                <div className="col-span-6">
-                    <Routes>
-                        <Route path='/' element={<GoodsPage/>}/>
-                    </Routes>
-                </div>
+        <div className="grid grid-cols-7 gap-2">
+            <SideBar/>
+            <div className="col-span-6">
+                <ErrorContext.Provider value={{error, setError}}>
+                    <ErrorElement/>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path='/' element={<GoodsPage/>}/>
+                        </Routes>
+                    </BrowserRouter>
+                </ErrorContext.Provider>
             </div>
-        </BrowserRouter>
+        </div>
     )
     /*
   const [count, setCount] = useState(0)
